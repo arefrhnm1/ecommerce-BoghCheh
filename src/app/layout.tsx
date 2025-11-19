@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Layout from "../components/Layout";
+import { ShoppingCartContextProvider } from "../context/ShoppingCartContext";
 
 export const metadata = {
 	title: "BOOGHCHEH",
@@ -11,8 +12,9 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body>
-				<Layout>{children}</Layout>
-				
+				<ShoppingCartContextProvider>
+					<Layout>{children}</Layout>
+				</ShoppingCartContextProvider>
 			</body>
 		</html>
 	);
