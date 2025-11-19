@@ -14,8 +14,9 @@ export default function Navbar() {
 
 	return (
 		<Container>
-			<nav className="shadow p-4 ">
-				{navLinks.map((item) => (
+			<nav className="shadow p-4 flex justify-between">
+				<div>
+					{navLinks.map((item) => (
 					<Link
 						key={item.href}
 						href={item.href}
@@ -26,6 +27,11 @@ export default function Navbar() {
 						{item.title}
 					</Link>
 				))}
+				</div>
+				
+				<div>
+					<Link href='/cart'>Cart</Link>
+				</div>
 			</nav>
 		</Container>
 	);
