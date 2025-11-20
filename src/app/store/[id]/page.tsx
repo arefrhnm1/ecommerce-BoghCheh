@@ -23,7 +23,7 @@ export default async function Product({ params }: IProductProps) {
 					<h2>{data.title}</h2>
 					<h4>{data.description}</h4>
 					<span>{data.price}$</span>
-					<AddToCart/>
+					<AddToCart id={id}/>
 				</div>
 			</div>
 		</Container>

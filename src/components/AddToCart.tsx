@@ -1,17 +1,38 @@
-'use client'
-import React, { useContext } from 'react'
-import { useShoppingCartContext } from '../context/ShoppingCartContext'
+"use client";
+import React, { useContext } from "react";
+import { useShoppingCartContext } from "../context/ShoppingCartContext";
 
-export default function AddToCart() {
+interface IAddToCartProps {
+	id: string;
+}
 
+export default function AddToCart({ id }: IAddToCartProps) {
+	const {
+		cartItems,
+		handleIncreaseProductQty,
+		getProductQty,
+		handleDecreaseProductQty,
+		handleRemoveProduct
+	} = useShoppingCartContext();
 
-    const {cartItems} = useShoppingCartContext()
-
-  return (
-    <div className='w-fit flex gap-5'>
-        <button className='bg-green-200 px-4 py-2 rounded-xl'>+</button>
-        <span className='px-4 py-2'>3</span>
-        <button className='bg-rose-200 px-4 py-2 rounded-xl'>-</button>
-    </div>
-  )
+	return (
+		<div>
+			<div className="w-fit flex gap-5">
+				<button
+					onClick={() => handleIncreaseProductQty(parseInt(id))}
+					className="bg-green-200 px-4 py-2 rounded-xl"
+				>
+					+
+				</button>
+				<span className="px-4 py-2">{getProductQty(parseInt(id))}</span>
+				<button
+					onClick={() => handleDecreaseProductQty(parseInt(id))}
+					className="bg-rose-200 px-4 py-2 rounded-xl"
+				>
+					-
+				</button>
+			</div>
+			<button onClick={() => handleRemoveProduct(parseInt(id))} className="bg-rose-700 text-white px-4 py-2 rounded-xl mt-2">delete</button>
+		</div>
+	);
 }
