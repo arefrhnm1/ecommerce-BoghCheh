@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Container from "./Container";
 import { useShoppingCartContext } from "../context/ShoppingCartContext";
+import { title } from "process";
 
 export default function Navbar() {
 	const pathname = usePathname();
@@ -12,6 +13,9 @@ export default function Navbar() {
 	const navLinks = [
 		{ href: "/", title: "Home" },
 		{ href: "/store", title: "Store" },
+		{
+			href:"/dashboard", title: 'dashboard'
+		}
 	];
 
 	return (
