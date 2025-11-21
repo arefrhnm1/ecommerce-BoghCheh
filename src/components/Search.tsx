@@ -33,8 +33,8 @@ export default function Search() {
 					fill="none"
 					stroke="currentColor"
 					strokeWidth="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					className="lucide lucide-search-icon lucide-search"
 				>
 					<path d="m21 21-4.34-4.34" />
