@@ -9,22 +9,17 @@ import { IProductItemProps } from "../../components/ProductItem";
 import Product from "../store/[id]/page";
 import { formatNumberWithCommas } from "../../utils/number";
 
-
-interface IDiscountData{
+interface IDiscountData {
 	id: number;
-	code: string,
+	code: string;
 	percentage: number;
-
 }
-
-
-
 
 export default function cart() {
 	const { cartItems } = useShoppingCartContext();
 	const [discountCode, setDiscountCode] = useState("");
-	const [finalPrice, setFinalPrice] = useState(0)
-	const [discountedPrice, setDiscountedPrice] = useState(0)
+	const [finalPrice, setFinalPrice] = useState(0);
+	const [discountedPrice, setDiscountedPrice] = useState(0);
 
 	// fetching//
 	const [data, setData] = useState<IProductItemProps[]>([]);
@@ -48,13 +43,12 @@ export default function cart() {
 	const handleSubmitDiscount = () => {
 		axios(`http://localhost:3001/discounts?code=${discountCode}`).then(
 			(result) => {
-				const data = result.data as IDiscountData[]
+				const data = result.data as IDiscountData[];
 
-				let discountedPrice = totalPrice * data[0].percentage / 100;
-				let finalPrice = totalPrice - discountedPrice
-				setFinalPrice(finalPrice)
-				setDiscountedPrice(discountedPrice)
-
+				let discountedPrice = (totalPrice * data[0].percentage) / 100;
+				let finalPrice = totalPrice - discountedPrice;
+				setFinalPrice(finalPrice);
+				setDiscountedPrice(discountedPrice);
 			}
 		);
 	};
