@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../../../components/Container";
 import { IProductItemProps } from "../../../components/ProductItem";
 import AddToCart from "../../../components/AddToCart";
+import { formatNumberWithCommas } from "../../../utils/number";
 
 interface IProductProps {
 	params: Promise<{ id: string }>;
@@ -22,7 +23,7 @@ export default async function Product({ params }: IProductProps) {
 				<div className="col-span-9">
 					<h2>{data.title}</h2>
 					<h4>{data.description}</h4>
-					<span>{data.price}$</span>
+					<span>{formatNumberWithCommas(data.price)}$</span>
 					<AddToCart id={id}/>
 				</div>
 			</div>

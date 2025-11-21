@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { IProductItemProps } from "./ProductItem";
 import AddToCart from "./AddToCart";
+import { formatNumberWithCommas } from "../utils/number";
 
 interface ICartItemProps {
 	id: number;
@@ -29,7 +30,7 @@ function CartItem({ id, qty }: ICartItemProps) {
 				<h2>{data.title}</h2>
 				<p>{data.description}</p>
 				<p>{qty}</p>
-				<p>price: {data.price}$</p>
+				<p>price: {formatNumberWithCommas(data.price ?? 0)}$</p>
 			</div>
 			<AddToCart id={id.toString()}/>
 		</div>
