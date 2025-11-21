@@ -1,7 +1,8 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Product from "../app/store/[id]/page";
+import { json } from "stream/consumers";
 
 type ShoppingCartContextProviderProps = {
 	children: React.ReactNode;
@@ -92,6 +93,20 @@ export function ShoppingCartContextProvider({
 			return currentitems.filter((item) => item.id != id);
 		});
 	};
+
+	// localStorage for data
+
+	useEffect(() => {
+		const sotredCartItems = localStorage.getItem("cartItems");
+
+		if (sotredCartItems) {
+			setCartItems(JSON.parse(sotredCartItems));
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("cartItems", JSON.stringify(cartItems));
+	}, [cartItems]);
 
 	return (
 		<ShoppingCartContext.Provider
